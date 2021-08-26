@@ -3,10 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link href="/css/styles.css" rel="stylesheet">
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
         {% block javascripts %}
@@ -14,6 +13,37 @@
         {% endblock %}
     </head>
     <body>
+    <nav class="backgroundNav navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('home') }}"><img src="/img/logobanniere.jpg" alt="Logo Mobil Guy"></a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link menu" href="/categorie/1">SMARTPHONE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu" href="/categorie/2">ACCESSOIRES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu" href="/panier/1">PANIER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu" href="#">COMPTE</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
         {% block body %}{% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="{{ path('home') }}">Home</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
     </body>
 </html>

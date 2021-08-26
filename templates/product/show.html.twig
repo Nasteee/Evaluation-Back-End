@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6">
+            <h5 class="mt-4">{{ product.marque.nom }}</h5>
+            <h2>{{ product.nom }}</h2>
+            <p>{{ product.description }}</p>
+            <p style="text-align: right; bottom: auto"><strong>{{ product.prix }}€</strong> <br>
+            {% if product.stock > 0%}
+                <strong>Disponible <br>
+                Stock :{{ product.stock }} produits</strong>
+            {% else %}
+                <strong>Aucun produit disponible</strong>
+            {% endif %}</p>
+            <a href="{{ path('panier', {'id': product.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+        </div>
+        <div class="col-md-6">
+            <img src="/img/{{ product.image }}" alt="Image du produit" class="w-100">
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-3">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, asperiores atque, autem culpa cum dolorem exercitationem itaque magnam magni nisi pariatur perferendis placeat quae quas quasi quibusdam quisquam temporibus voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam eligendi est ipsa magni molestiae molestias necessitatibus, nobis, quisquam quos recusandae sapiente temporibus velit veniam voluptate. Eveniet iste quibusdam unde. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam deleniti deserunt eos optio ratione soluta voluptatem voluptatibus. Ab accusantium, ad consequuntur esse et iusto perspiciatis quo, quod repudiandae sequi vel. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at cupiditate dolor magnam quos saepe sunt tenetur vero? Aut commodi consequuntur dicta ipsam iusto nesciunt nulla numquam quaerat quam temporibus!</p>
+    </div>
+
+    <div class="row">
+        {% for produit in produits|slice(0, 4) %}
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <h3 class="card-title">{{ produit.marque.nom }}</h3>
+                    <h5 class="card-title">{{ produit.nom }}</h5>
+                    <img src="/img/{{ produit.image }}" class="card-img-top img-fluid rounded center-block " style="width: 150px; margin: auto" alt="Image du produit">
+                    <div class="card-body">
+
+                        <p class="text-center fw-bold">Prix : {{ produit.prix }}€ <br>
+                            Stock : {{ produit.stock }}
+                        </p>
+                        <a href="{{ path('product_show', {'id': produit.id}) }}" class="btn btn-primary mb-2">En savoir plus</a>
+                        <a href="{{ path('panier', {'id': produit.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{#    <a href="{{ path('product_index') }}">back to list</a>#}
+
+{#    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>#}
+
+{#    {{ include('product/_delete_form.html.twig') }}#}
+
+{% endblock %}

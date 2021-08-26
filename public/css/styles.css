@@ -1,0 +1,25 @@
+@font-face {
+    font-family:"robotoLight";
+    src:url("../font/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family:"secularOne";
+    src: url("../font/SecularOne-Regular.ttf");
+}
+
+
+.backgroundNav{
+    background-color: #F3D9B0!important;
+}
+
+body{
+    font-family: robotoLight;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: secularOne;
+}
+.menu{
+    font-family: secularOne;
+}
+

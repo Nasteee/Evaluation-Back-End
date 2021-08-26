@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <h1 class="mt-3 mb-3">{{ categorie.nom }}</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad asperiores cum delectus id impedit, iure iusto,
+        labore natus nemo nostrum obcaecati praesentium quae quod ratione recusandae rem tempora ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur culpa deleniti
+        dignissimos eos est, id illum iure labore nihil odit provident qui quia ratione rem repellat repudiandae sunt unde. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto atque cupiditate eius
+        esse impedit ipsa nemo odit quod tenetur! Architecto aspernatur error ex facilis id nulla quos repellendus vel voluptates.</p>
+
+    <div class="row mt-4">
+
+
+    {% for produit in categorie.products %}
+        <div class="col-md-3">
+            <div class="card mb-3 ml-2" style="width: 18rem;">
+                <h3 class="card-title">{{ produit.marque.nom }}</h3>
+                <h5 class="card-title">{{ produit.nom }}</h5>
+                <img src="/img/{{ produit.image }}" class="card-img-top img-fluid rounded center-block " style="width: 150px; margin: auto" alt="Image du produit">
+                <div class="card-body">
+
+                    <p class="text-center fw-bold">Prix : {{ produit.prix }}€ <br>
+                        Stock : {{ produit.stock }}
+                    </p>
+                    <a href="{{ path('product_show', {'id': produit.id}) }}" class="btn btn-primary mb-2">En savoir plus</a>
+                    <a href="{{ path('panier', {'id': produit.id}) }}" class="btn btn-primary">Ajouter au panier</a>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+    </div>
+
+{#    <a href="{{ path('categorie_index') }}">back to list</a>#}
+
+{#    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>#}
+
+
+
+{#    {{ include('categorie/_delete_form.html.twig') }}#}
+{% endblock %}
